@@ -1,0 +1,17 @@
+export enum ENDPOINT_CONSTANTS {
+  ME = "me",
+  ADMIN = "admin",
+  ADMIN_LOGIN = "admin_login",
+  ADMIN_COURSE = "admin_course",
+  ADMIN_TEACHER = "admin_teacher",
+  USER = "user",
+  USER_ME = "user/me",
+  AUTH_SIGNUP = "auth/signup",
+  AUTH_LOGIN = "auth/login",
+  USER_SETTINGS = "user/settings",
+  USER_FORGET_PASSWORK = "user/forget-passwork",
+  USER_RESET = "user/reset",
+  BLOG = "blog",
+  COMMENT = "comment",
+  SEARCH = "search",
+}
