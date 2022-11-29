@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../store/hook";
-import { getUserLogin, userDataSelector } from "../store/userSlice";
+import React, { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../store/hook';
+import { getUserLogin, userDataSelector } from '../store/userSlice';
 
 const Courses = () => {
   const dispatch = useAppDispatch();
   const data = useAppSelector(userDataSelector);
 
-  console.log("data", data);
+  console.log(data);
 
   useEffect(() => {
     dispatch(getUserLogin());
