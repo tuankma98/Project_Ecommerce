@@ -16,6 +16,10 @@ a {
   text-decoration: none;
 }
 
+img {
+  border-style: none;
+}
+
 * {
   box-sizing: border-box;
 }

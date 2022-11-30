@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hook';
 import { getUserLogin, userDataSelector } from '../store/userSlice';
+import ImagesSlider from './slider/ImagesSlider';
 
 const Courses = () => {
   const dispatch = useAppDispatch();
@@ -12,7 +13,7 @@ const Courses = () => {
     dispatch(getUserLogin());
   }, []);
 
-  return <div>Courses</div>;
+  return <ImagesSlider />;
 };
 
 export default Courses;
