@@ -4,9 +4,9 @@ const useSliderStyles = makeStyles((theme) =>
   createStyles({
     wrapper: {
       '& > .slick-slider > .slick-list': {
-        height: '100%',
+        height: '270px',
       },
-      '& > .slick-slider > .slick-list > .slick-track': {
+      '& > .slick-slider > .slick-track': {
         height: '100%',
       },
     },
@@ -15,7 +15,7 @@ const useSliderStyles = makeStyles((theme) =>
       width: '100%',
       display: 'flex',
       alignItems: 'center',
-      background: 'red',
+      // background: 'red',
 
       '& > .slick-prev': {
         left: '-10px',
