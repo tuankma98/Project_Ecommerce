@@ -243,12 +243,12 @@ const useButtonStyles = makeStyles((theme: Theme) =>
       },
     },
     newSmallButton: {
-      background: `${theme.palette.primary.light} 0% 0% no-repeat padding-box`,
+      background: `#f05123 0% 0% no-repeat padding-box`,
       boxShadow: '0px 3px 6px #5987E033',
-      borderRadius: '6px',
       color: '#FFFFFF',
-      width: '156px',
-      padding: theme.spacing(1),
+      padding: '5px 29px',
+      borderRadius: '999px',
+
       '&:hover': {
         backgroundColor: theme.palette.primary.light,
       },

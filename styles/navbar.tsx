@@ -65,7 +65,8 @@ const useNavbarStyles = makeStyles((theme: Theme) =>
       height: '40px',
       padding: '0 16px 0 8px',
       transition: 'border-color .2s ease-in-out',
-      width: '420px',
+      minWidth: '420px',
+      maxWidth: '420px',
 
       '&:focus-within': {
         borderColor: '#444',

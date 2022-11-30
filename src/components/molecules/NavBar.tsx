@@ -8,9 +8,10 @@ import NavbarHomeIcon from '../atoms/navbar/NavbarHomeIcon';
 import NavbarLogo from '../atoms/navbar/NavbarLogo';
 import Typography from '@mui/material/Typography';
 import CustomIcon from '../atoms/icons/CustomIcon';
-import { ICON_FONT_SIZE } from '../../../styles/ui';
+import { BUTTON_TYPE, ICON_FONT_SIZE } from '../../../styles/ui';
 import { useTheme } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
+import CustomButton from '../atoms/CustomButton';
 
 const Navbar: React.FunctionComponent = () => {
   const classes = {
@@ -37,7 +38,13 @@ const Navbar: React.FunctionComponent = () => {
             }}
           >
             <NavbarLogo />
-            <Typography>Học Lập Trình Để Đi Làm </Typography>
+            <Typography
+              variant="subtitle1"
+              fontWeight={700}
+              style={{ wordSpacing: '2px' }}
+            >
+              Học Lập Trình Để Đi Làm{' '}
+            </Typography>
           </Box>
           <Box
             display="flex"
@@ -61,8 +68,14 @@ const Navbar: React.FunctionComponent = () => {
             flex="1 1"
           >
             {/* <NotificationHeader /> */}
-            <Box>TB</Box>
-            <Box>TB2</Box>
+            <CustomButton
+              type="submit"
+              customStyle={{
+                fontSize: '14px',
+              }}
+              customMessageStyles={{ textTransform: 'none' }}
+              message="Đăng nhập"
+            />
 
             {/* <Box ml={3}>
               <AvatarButton

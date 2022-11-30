@@ -1,3 +1,4 @@
+import Box from '@mui/material/Box';
 import Head from 'next/head';
 import Image from 'next/image';
 import Courses from '../src/components/Courses';
@@ -20,13 +21,24 @@ export default function Home() {
           rel="stylesheet"
           href="https://fonts.googleapis.com/icon?family=Material+Icons"
         />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
+        />
+        <link
+          rel="stylesheet"
+          type="text/css"
+          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
+        />
         <link rel="stylesheet" href="/fonts/fonts.css" />
       </Head>
 
       <main className={styles.main}>
         <NavBar />
-
-        <Courses />
+        <Box mt={2}>
+          <Courses />
+        </Box>
         <p className={styles.description}>
           Get started by editing{' '}
           <code className={styles.code}>pages/index.tsx</code>
