@@ -39,7 +39,6 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
       </Head>
       <main>
         <Box>{children}</Box>
-
         <Footer />
       </main>
     </>
