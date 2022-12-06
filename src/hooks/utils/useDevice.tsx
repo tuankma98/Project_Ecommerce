@@ -1,4 +1,10 @@
-import { BrowserView, CustomView, isDesktop, isMobile, MobileView } from "react-device-detect";
+import {
+  BrowserView,
+  CustomView,
+  isDesktop,
+  isMobile,
+  MobileView,
+} from 'react-device-detect';
 
 const useDevice = () => {
   return {

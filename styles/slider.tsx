@@ -15,7 +15,7 @@ const useSliderStyles = makeStyles((theme) =>
       width: '100%',
       display: 'flex',
       alignItems: 'center',
-      // background: 'red',
+      borderRadius: 16,
 
       '& > .slick-prev': {
         left: '-10px',
@@ -38,6 +38,9 @@ const useSliderStyles = makeStyles((theme) =>
           fontSize: 32,
           color: '#4b4b4b',
         },
+      },
+      '& .slick-dots': {
+        textAlign: 'start',
       },
     },
     cardWrapper: {

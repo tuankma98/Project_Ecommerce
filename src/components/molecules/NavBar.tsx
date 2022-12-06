@@ -1,17 +1,15 @@
 import { Box, Toolbar } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import React from 'react';
-import useNavbarStyles from '../../../styles/navbar';
-import useWordWrapStyles from '../../../styles/wordWrap';
-import useButtonStyles from '../../../styles/button';
-import NavbarHomeIcon from '../atoms/navbar/NavbarHomeIcon';
-import NavbarLogo from '../atoms/navbar/NavbarLogo';
 import Typography from '@mui/material/Typography';
-import CustomIcon from '../atoms/icons/CustomIcon';
 import { BUTTON_TYPE, ICON_FONT_SIZE } from '../../../styles/ui';
 import { useTheme } from '@mui/material/styles';
 import SearchIcon from '@mui/icons-material/Search';
 import CustomButton from '../atoms/CustomButton';
+import useNavbarStyles from '~/navbar';
+import useWordWrapStyles from '~/wordWrap';
+import useButtonStyles from '~/button';
+import NavbarLogo from '../atoms/navbar/NavbarLogo';
 
 const Navbar: React.FunctionComponent = () => {
   const classes = {
@@ -26,8 +24,8 @@ const Navbar: React.FunctionComponent = () => {
 
   return (
     <Box position="fixed" className={classes.newAppBar}>
-      <Box borderBottom="1px solid #e8ebed">
-        <Toolbar style={{ display: 'flex', flex: '1 1' }}>
+      <Box borderBottom="1px solid #e8ebed" height="100%">
+        <Toolbar style={{ display: 'flex', flex: '1 1', height: '100%' }}>
           {/* <NavbarHomeIcon /> */}
           <Box
             style={{

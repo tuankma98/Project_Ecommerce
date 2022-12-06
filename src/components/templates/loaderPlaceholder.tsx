@@ -1,7 +1,7 @@
 import CircularProgress from '@mui/material/CircularProgress';
 import Container from '@mui/material/Container';
 import { FunctionComponent } from 'react';
-import useContainerStyles from '../../../styles/container';
+import useContainerStyles from '~/container';
 
 const LoaderPlaceholder: FunctionComponent = () => {
   const classes = {

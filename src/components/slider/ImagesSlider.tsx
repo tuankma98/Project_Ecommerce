@@ -1,6 +1,7 @@
 import Box from '@mui/material/Box';
 import Slider from 'react-slick';
-import useSliderStyles from '../../../styles/slider';
+import useSliderStyles from '~/slider';
+// import useSliderStyles from '../../../styles/slider';
 import SliderScrollButton from '../atoms/buttons/SliderScrollButton';
 
 const ImagesSlider = () => {
@@ -18,8 +19,7 @@ const ImagesSlider = () => {
   const classes = { ...useSliderStyles() };
 
   return (
-    <Box width="100vh">
-      <h2> Single Item</h2>
+    <Box width="100%">
       <Slider {...settings} className={classes.slider}>
         <Box textAlign="center">
           <img
