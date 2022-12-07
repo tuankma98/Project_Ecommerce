@@ -4,14 +4,14 @@ import { useAppDispatch, useAppSelector } from '../store/hook';
 import ImagesSlider from './slider/ImagesSlider';
 
 const Banner = () => {
-  const dispatch = useAppDispatch();
-  const data = useAppSelector(userDataSelector);
+  // const dispatch = useAppDispatch();
+  // const data = useAppSelector(userDataSelector);
 
-  console.log(data);
+  // console.log(data);
 
-  useEffect(() => {
-    dispatch(getUserLogin());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getUserLogin());
+  // }, []);
 
   return <ImagesSlider />;
 };

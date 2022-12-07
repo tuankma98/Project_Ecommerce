@@ -20,9 +20,7 @@ import { useRouter } from 'next/router';
 const Sidebar: React.FunctionComponent = () => {
   const classes = { ...useSidebarStyles() };
   const router = useRouter();
-  console.log(router);
   const isPathName = ['/'].includes(router.asPath);
-  console.log(isPathName);
 
   return (
     <Box className={classes.root}>

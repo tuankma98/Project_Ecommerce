@@ -18,6 +18,8 @@ type CustomButtonProps = {
   iconPosition?: string;
   iconClassName?: string;
   iconSize?: number;
+  disabled?: boolean;
+  type?: string;
 };
 
 const CustomButton: React.FC<CustomButtonProps & ButtonProps> = ({
@@ -30,6 +32,8 @@ const CustomButton: React.FC<CustomButtonProps & ButtonProps> = ({
   iconPosition,
   iconClassName,
   iconSize,
+  disabled,
+  type,
   ...rest
 }) => {
   const theme = useTheme();
@@ -67,6 +71,8 @@ const CustomButton: React.FC<CustomButtonProps & ButtonProps> = ({
       onClick={onClick}
       className={getButtonClass()}
       style={customStyle}
+      disabled={disabled}
+      type={type}
     >
       {buttonType && (
         <CustomIcon

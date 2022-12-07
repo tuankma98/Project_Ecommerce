@@ -10,6 +10,7 @@ import useNavbarStyles from '~/navbar';
 import useWordWrapStyles from '~/wordWrap';
 import useButtonStyles from '~/button';
 import NavbarLogo from '../atoms/navbar/NavbarLogo';
+import { useRouter } from 'next/router';
 
 const Navbar: React.FunctionComponent = () => {
   const classes = {
@@ -21,6 +22,7 @@ const Navbar: React.FunctionComponent = () => {
   const [infoOpened, setInfoOpened] = React.useState(false);
   const infoAnchorRef = React.useRef<HTMLButtonElement>(null);
   const theme = useTheme();
+  const router = useRouter();
 
   return (
     <Box position="fixed" className={classes.newAppBar}>
@@ -73,6 +75,7 @@ const Navbar: React.FunctionComponent = () => {
               }}
               customMessageStyles={{ textTransform: 'none' }}
               message="Đăng nhập"
+              onClick={() => router.push('/signin')}
             />
 
             {/* <Box ml={3}>
