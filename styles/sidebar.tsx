@@ -6,7 +6,7 @@ import zIndex from '@mui/material/styles/zIndex';
 
 const useSidebarStyles = makeStyles(() =>
   createStyles({
-    root: { flexShrink: 0, color: '#1a1a1a' },
+    root: { flexShrink: 0 },
     list: {
       display: 'flex',
       alignItems: 'center',
@@ -23,13 +23,6 @@ const useSidebarStyles = makeStyles(() =>
     listItem: {
       '& .css-1r8ijuk-MuiButtonBase-root-MuiListItemButton-root:hover': {
         borderRadius: '16px',
-        '&.listText': {
-          color: '#1a1a1a',
-        },
-        '& .css-1r8ijuk-MuiButtonBase-root-MuiListItemButton-root:hover .listText':
-          {
-            color: 'red',
-          },
       },
     },
     listBtn: {
@@ -37,6 +30,7 @@ const useSidebarStyles = makeStyles(() =>
       flexDirection: 'column',
       paddingRight: 0,
       paddingLeft: 0,
+      borderRadius: '16px',
     },
     listIcon: {
       display: 'flex',
@@ -45,6 +39,16 @@ const useSidebarStyles = makeStyles(() =>
     listText: {
       color: '#404040',
       margin: 0,
+    },
+    sidebarItemSelected: {
+      borderRadius: 16,
+      backgroundColor: '#e8ebed',
+      '& .css-tlelie-MuiListItemText-root': {
+        color: '#1a1a1a',
+      },
+      '& .css-cveggr-MuiListItemIcon-root': {
+        color: '#1a1a1a',
+      },
     },
   }),
 );

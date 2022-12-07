@@ -14,9 +14,15 @@ import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import TheatersIcon from '@mui/icons-material/Theaters';
 import MapsUgcIcon from '@mui/icons-material/MapsUgc';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
+import clsx from 'clsx';
+import { useRouter } from 'next/router';
 
 const Sidebar: React.FunctionComponent = () => {
   const classes = { ...useSidebarStyles() };
+  const router = useRouter();
+  console.log(router);
+  const isPathName = ['/'].includes(router.asPath);
+  console.log(isPathName);
 
   return (
     <Box className={classes.root}>
@@ -31,11 +37,21 @@ const Sidebar: React.FunctionComponent = () => {
         >
           <Box className={classes.listBtn}>
             <ListItemIcon className={classes.listIcon}>
-              <AddCircleOutlinedIcon fontSize="large" />
+              <AddCircleOutlinedIcon
+                fontSize="large"
+                style={{ color: '#1473e6', fontSize: '51.6px' }}
+              />
             </ListItemIcon>
           </Box>
         </ListItem>
-        <ListItem disablePadding className={classes.listItem}>
+        <ListItem
+          disablePadding
+          className={
+            isPathName
+              ? clsx(classes.listItem, classes.sidebarItemSelected)
+              : classes.listItem
+          }
+        >
           <ListItemButton className={classes.listBtn}>
             <ListItemIcon className={classes.listIcon}>
               <HomeIcon />

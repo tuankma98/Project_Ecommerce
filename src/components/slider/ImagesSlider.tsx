@@ -1,8 +1,13 @@
 import Box from '@mui/material/Box';
+import Image from 'next/image';
 import Slider from 'react-slick';
 import useSliderStyles from '~/slider';
 // import useSliderStyles from '../../../styles/slider';
 import SliderScrollButton from '../atoms/buttons/SliderScrollButton';
+import youtube from '~@/images/youtube.png';
+import reactjs from '~@/images/reactjs.png';
+import banner from '~@/images/banner.png';
+import course from '~@/images/course.png';
 
 const ImagesSlider = () => {
   const settings = {
@@ -22,27 +27,43 @@ const ImagesSlider = () => {
     <Box width="100%">
       <Slider {...settings} className={classes.slider}>
         <Box textAlign="center">
-          <img
-            src="https://files.fullstack.edu.vn/f8-prod/banners/Banner_04_2.png"
+          <Image
+            src={banner}
             alt="banner"
+            style={{
+              objectFit: 'cover',
+              height: '100%',
+            }}
           />
         </Box>
         <Box textAlign="center">
-          <img
-            src="https://files.fullstack.edu.vn/f8-prod/banners/Banner_03_youtube.png"
+          <Image
+            src={youtube}
             alt="banner"
+            style={{
+              objectFit: 'cover',
+              height: '100%',
+            }}
           />
         </Box>
         <Box textAlign="center">
-          <img
-            src="https://files.fullstack.edu.vn/f8-prod/banners/Banner_01_2.png"
+          <Image
+            src={course}
             alt="banner"
+            style={{
+              objectFit: 'cover',
+              height: '100%',
+            }}
           />
         </Box>
         <Box textAlign="center">
-          <img
-            src="https://files.fullstack.edu.vn/f8-prod/banners/Banner_web_ReactJS.png"
+          <Image
+            src={reactjs}
             alt="banner"
+            style={{
+              objectFit: 'cover',
+              height: '100%',
+            }}
           />
         </Box>
       </Slider>

@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hook';
 import ImagesSlider from './slider/ImagesSlider';
 
-const Courses = () => {
+const Banner = () => {
   const dispatch = useAppDispatch();
   const data = useAppSelector(userDataSelector);
 
@@ -16,4 +16,4 @@ const Courses = () => {
   return <ImagesSlider />;
 };
 
-export default Courses;
+export default Banner;

@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Sidebar from '@/components/molecules/Sidebar';
-import Courses from '../Courses';
+import Courses from '../Banner';
 import NavBar from '@/components/molecules/NavBar';
 import Footer from '../molecules/Footer';
 import useLayoutStyles from '~/layout';
