@@ -15,16 +15,18 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CustomButton from '@/components/atoms/CustomButton';
 import { useAppDispatch, useAppSelector } from '@/store/hook';
-import { createUser, userDataCreateSelector } from '@/store/userSlice';
+import { createUser, tockenDataCreateSelector } from '@/store/userSlice';
+import { useRouter } from 'next/router';
 
 const Signup = () => {
   const theme = createTheme();
+  const router = useRouter();
   const dispatch = useAppDispatch();
-  const dataUser = useAppSelector(userDataCreateSelector);
+  const token = useAppSelector(tockenDataCreateSelector);
+
   const [messageUserName, setMessageUserName] = useState(true);
   const [messageEmail, setMessageEmail] = useState(true);
   const [messagePass, setMessagePass] = useState(true);
-  const [tokens, setTokens] = useState('');
   const [message, setMessage] = useState(true);
   const [isverify, setIsverify] = useState(true);
 
@@ -34,42 +36,33 @@ const Signup = () => {
   };
 
   useEffect(() => {
-    const localToken = window.localStorage.getItem('tokens');
-    if (localToken === null) {
-      localStorage.setItem('tokens', JSON.stringify(tokens));
+    if (token) {
+      setMessage(true);
+      setMessagePass(true);
+      setMessageUserName(true);
+      localStorage.setItem('tokens', JSON.stringify(token));
+      router.push('/');
     }
-  }, []);
+  }, [token]);
 
   // const { fetchDataUser } = signUpUser();
 
   const getDataUser = async (raw) => {
-    console.log('raw', raw);
     await dispatch(createUser(raw));
 
-    // const data = await fetchDataUser(raw, API_SIGNUP);
-    // console.log(data);
     // if (data?.errors) {
     //   setMessage(false);
     //   setMessagePass(true);
     //   setMessageUserName(true);
     // }
-    // if (data.msg === "User Already Exists") {
+    // if (data.msg === 'User Already Exists') {
     //   setMessageUserName(false);
     //   setMessage(true);
-    // }
-    // if (data.token) {
-    //   setMessage(true);
-    //   setMessagePass(true);
-    //   setMessageUserName(true);
-    //   localStorage.setItem("tokens", JSON.stringify(data.token));
-    //   window.location.href = API_LINK;
     // }
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
     const data = new FormData(event.currentTarget);
 
     const raw = JSON.stringify({
@@ -77,12 +70,6 @@ const Signup = () => {
       username: data.get('userName'),
       password: data.get('password'),
     });
-
-    const userData = {
-      email: data.get('email'),
-      username: data.get('userName'),
-      password: data.get('password'),
-    };
 
     const password = JSON.parse(raw).password;
 
@@ -92,7 +79,6 @@ const Signup = () => {
 
     if (res) {
       getDataUser(raw);
-      // dispatch(createUser(raw));
       console.log('Valid password!');
     } else {
       console.log('Not a valid password.');
@@ -143,6 +129,7 @@ const Signup = () => {
                 name="password"
                 defaultValue={''}
                 placeholder="Password"
+                type="password"
               />
             </Box>
             {/* <Grid container spacing={2}>

@@ -20,7 +20,11 @@ export const postData = async (endpoint, formData, params, headers) => {
   }
 };
 
-export const getData = async (endpoint, params, headers) => {
+export const getData = async (
+  endpoint: string,
+  params: Record<string, unknown>,
+  headers,
+) => {
   try {
     const response = await axiosClient.get(`/${endpoint}`, { params, headers });
 

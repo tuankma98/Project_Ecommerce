@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Sidebar from '@/components/molecules/Sidebar';
@@ -8,6 +8,9 @@ import Footer from '../molecules/Footer';
 import useLayoutStyles from '~/layout';
 import theme from '@/utils/theme';
 import useDevice from '@/hooks/utils/useDevice';
+import { getUserCreate, userDataSelector } from '@/store/userSlice';
+import { useAppDispatch, useAppSelector } from '@/store/hook';
+import getTokenUser from '@/api/getTokenUser';
 
 type LayoutProps = {
   children: ReactNode | ReactNode[];
@@ -28,11 +31,22 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
 }) => {
   const classes = useLayoutStyles();
   const { isMobile } = useDevice();
+  const dispatch = useAppDispatch();
 
   const getContentPadding: (showNavbar: boolean) => string = (showNavbar) => {
     if (showNavbar && isMobile) return theme.spacing(13.5);
     else if (showNavbar && !isMobile) return theme.spacing(8.25);
     else return '0';
+  };
+
+  useEffect(() => {
+    getDataCreateUser();
+  }, []);
+
+  const getDataCreateUser = async () => {
+    const localTokens = localStorage.getItem('tokens');
+    const token = JSON.parse(localTokens);
+    if (token) await dispatch(getUserCreate(token));
   };
 
   return (

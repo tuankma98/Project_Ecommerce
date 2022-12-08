@@ -5,34 +5,31 @@ import {
 } from '@reduxjs/toolkit';
 import { getData, postData } from '../api';
 import { RootState } from './store';
+import { NavbarType } from '@/utils/types';
 
 // get user login
-export const getUserLogin = createAsyncThunk('user/getAll', async () => {
-  try {
-    const response = await getData(
-      'posts',
-      {},
-      {
-        'content-type': 'application/json',
-      },
-    );
-    return response.data;
-  } catch (err) {
-    return err;
-  }
-});
+export const getUserCreate = createAsyncThunk(
+  'user/getAll',
+  async (token: string, { rejectWithValue }) => {
+    try {
+      const response = await getData(
+        'user/me',
+        {},
+        {
+          Authorization: `${token}`,
+        },
+      );
+      return response.data;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  },
+);
 
 // create account user
-
-// type formDataType = {
-//   username: string;
-//   email: string;
-//   password: string;
-// };
 export const createUser = createAsyncThunk(
   'user/create',
   async (formData: string, { rejectWithValue }) => {
-    console.log(formData);
     try {
       const response = await postData(
         'auth/signup',
@@ -43,7 +40,6 @@ export const createUser = createAsyncThunk(
         },
       );
 
-      console.log(response);
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -55,16 +51,18 @@ const userSlice = createSlice({
   name: 'user',
   initialState: {
     data: {},
-    user: {},
+    token: null,
+    dataUser: {},
   },
   reducers: {},
   extraReducers: (builder) => {
     builder
-      .addCase(getUserLogin.fulfilled, (state, action) => {
+      .addCase(getUserCreate.fulfilled, (state, action) => {
         state.data = action.payload;
       })
       .addCase(createUser.fulfilled, (state, action) => {
-        state.user = action.payload;
+        state.token = action.payload.token;
+        state.dataUser = action.payload;
       });
   },
 });
@@ -79,7 +77,12 @@ export const userDataSelector = createSelector(
   (state) => state.data,
 );
 
-export const userDataCreateSelector = createSelector(
+export const tockenDataCreateSelector = createSelector(
   [userData],
-  (state) => state.user,
+  (state) => state.token,
+);
+
+export const dataUserCreateSelector = createSelector(
+  [userData],
+  (state) => state.dataUser,
 );

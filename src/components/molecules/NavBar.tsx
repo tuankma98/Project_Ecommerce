@@ -10,8 +10,14 @@ import useNavbarStyles from '~/navbar';
 import useWordWrapStyles from '~/wordWrap';
 import useButtonStyles from '~/button';
 import NavbarLogo from '../atoms/navbar/NavbarLogo';
+import { useRouter } from 'next/router';
+import { userDataSelector } from '@/store/userSlice';
+import { useAppSelector } from '@/store/hook';
 
 const Navbar: React.FunctionComponent = () => {
+  const data = useAppSelector(userDataSelector);
+
+  console.log(data);
   const classes = {
     ...useNavbarStyles(),
     ...useWordWrapStyles(),
@@ -21,6 +27,7 @@ const Navbar: React.FunctionComponent = () => {
   const [infoOpened, setInfoOpened] = React.useState(false);
   const infoAnchorRef = React.useRef<HTMLButtonElement>(null);
   const theme = useTheme();
+  const router = useRouter();
 
   return (
     <Box position="fixed" className={classes.newAppBar}>
@@ -66,14 +73,17 @@ const Navbar: React.FunctionComponent = () => {
             flex="1 1"
           >
             {/* <NotificationHeader /> */}
-            <CustomButton
-              type="submit"
-              customStyle={{
-                fontSize: '14px',
-              }}
-              customMessageStyles={{ textTransform: 'none' }}
-              message="Đăng nhập"
-            />
+            {data && (
+              <CustomButton
+                type="submit"
+                customStyle={{
+                  fontSize: '14px',
+                }}
+                customMessageStyles={{ textTransform: 'none' }}
+                message="Đăng nhập"
+                onClick={() => router.push('/signin')}
+              />
+            )}
 
             {/* <Box ml={3}>
               <AvatarButton
