@@ -39,10 +39,11 @@ const useNavbarStyles = makeStyles((theme: Theme) =>
       },
     },
     useInfoPopup: {
-      backgroundColor: '#707070',
-      width: '220px',
+      backgroundColor: '#FFFFFF',
+      width: '233px',
       marginTop: theme.spacing(1),
-      padding: theme.spacing(1),
+      paddingLeft: theme.spacing(1),
+      paddingRight: theme.spacing(1),
     },
     organizationSelect: {
       '@media (max-width: 768px)': {

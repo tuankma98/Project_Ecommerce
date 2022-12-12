@@ -52,7 +52,7 @@ const useWordWrapStyles = makeStyles(() =>
       textOverflow: 'ellipsis',
       overflow: 'hidden',
       whiteSpace: 'nowrap',
-      maxWidth: 120,
+      maxWidth: 'calc(100% - 65px)',
     },
 
     lineClamps: {

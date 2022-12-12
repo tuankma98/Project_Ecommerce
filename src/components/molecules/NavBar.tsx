@@ -13,11 +13,11 @@ import NavbarLogo from '../atoms/navbar/NavbarLogo';
 import { useRouter } from 'next/router';
 import { userDataSelector } from '@/store/userSlice';
 import { useAppSelector } from '@/store/hook';
+import AccountMenu from '../atoms/navbar/AccountMenu';
 
 const Navbar: React.FunctionComponent = () => {
   const data = useAppSelector(userDataSelector);
 
-  console.log(data);
   const classes = {
     ...useNavbarStyles(),
     ...useWordWrapStyles(),
@@ -32,7 +32,7 @@ const Navbar: React.FunctionComponent = () => {
   return (
     <Box position="fixed" className={classes.newAppBar}>
       <Box borderBottom="1px solid #e8ebed" height="100%">
-        <Toolbar style={{ display: 'flex', flex: '1 1', height: '100%' }}>
+        <Toolbar style={{ display: 'flex', height: '100%' }}>
           {/* <NavbarHomeIcon /> */}
           <Box
             style={{
@@ -73,7 +73,7 @@ const Navbar: React.FunctionComponent = () => {
             flex="1 1"
           >
             {/* <NotificationHeader /> */}
-            {data && (
+            {!data ? (
               <CustomButton
                 type="submit"
                 customStyle={{
@@ -83,6 +83,10 @@ const Navbar: React.FunctionComponent = () => {
                 message="Đăng nhập"
                 onClick={() => router.push('/signin')}
               />
+            ) : (
+              <Box>
+                <AccountMenu />
+              </Box>
             )}
 
             {/* <Box ml={3}>

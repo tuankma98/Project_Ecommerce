@@ -347,7 +347,8 @@ const useButtonStyles = makeStyles((theme: Theme) =>
       backgroundColor: '#FFF',
       color: '#707070',
       '&:hover': {
-        backgroundColor: '#FFF',
+        backgroundColor: '#F97721',
+        color: '#FFF',
       },
     },
     roundEditButton: {

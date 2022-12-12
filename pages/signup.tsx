@@ -1,15 +1,11 @@
-import { useRef, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import Avatar from '@mui/material/Avatar';
-import Button from '@mui/material/Button';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
-import TextField from '@mui/material/TextField';
-import Grid from '@mui/material/Grid';
 import ReCAPTCHA from 'react-google-recaptcha';
 import Copyright from '@/components/molecules/Copyright';
 import Link from 'next/link';
-import { useTheme } from '@mui/material/styles';
 import CustomInput from '@/components/atoms/CustomInput';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
@@ -17,6 +13,7 @@ import CustomButton from '@/components/atoms/CustomButton';
 import { useAppDispatch, useAppSelector } from '@/store/hook';
 import { createUser, tockenDataCreateSelector } from '@/store/userSlice';
 import { useRouter } from 'next/router';
+import Layout from '@/components/templates/layout';
 
 const Signup = () => {
   const theme = createTheme();
@@ -86,53 +83,54 @@ const Signup = () => {
   };
 
   return (
-    <ThemeProvider theme={theme}>
-      <Container component="main" maxWidth="xs">
-        <Box
-          sx={{
-            marginTop: 8,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Avatar sx={{ m: 1, background: '#f05123' }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Đăng ký
-          </Typography>
+    <Layout title={'Signup'}>
+      <ThemeProvider theme={theme}>
+        <Container component="main" maxWidth="xs">
           <Box
-            component="form"
-            noValidate
-            onSubmit={handleSubmit}
-            sx={{ mt: 3 }}
-            width="100%"
+            sx={{
+              marginTop: 8,
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+            }}
           >
-            <CustomInput
-              customId="userName"
-              name="userName"
-              defaultValue={''}
-              placeholder="User Name"
-            />
-            <Box mt={2}>
+            <Avatar sx={{ m: 1, background: '#f05123' }}>
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h5">
+              Đăng ký
+            </Typography>
+            <Box
+              component="form"
+              noValidate
+              onSubmit={handleSubmit}
+              sx={{ mt: 3 }}
+              width="100%"
+            >
               <CustomInput
-                customId="email"
-                name="email"
+                customId="userName"
+                name="userName"
                 defaultValue={''}
-                placeholder="Email Address"
+                placeholder="User Name"
               />
-            </Box>
-            <Box mt={2}>
-              <CustomInput
-                customId="password"
-                name="password"
-                defaultValue={''}
-                placeholder="Password"
-                type="password"
-              />
-            </Box>
-            {/* <Grid container spacing={2}>
+              <Box mt={2}>
+                <CustomInput
+                  customId="email"
+                  name="email"
+                  defaultValue={''}
+                  placeholder="Email Address"
+                />
+              </Box>
+              <Box mt={2}>
+                <CustomInput
+                  customId="password"
+                  name="password"
+                  defaultValue={''}
+                  placeholder="Password"
+                  type="password"
+                />
+              </Box>
+              {/* <Grid container spacing={2}>
               <Grid item xs={12}>
                 <TextField
                   autoComplete="given-name"
@@ -182,34 +180,35 @@ const Signup = () => {
                 )}
               </Grid>
             </Grid> */}
-            <Box mt={2}>
-              <ReCAPTCHA
-                sitekey="6Lelby0gAAAAAI9V-f0jKtIIHknw17goLCiHU_uk"
-                onChange={onChange}
+              <Box mt={2}>
+                <ReCAPTCHA
+                  sitekey="6Lelby0gAAAAAI9V-f0jKtIIHknw17goLCiHU_uk"
+                  onChange={onChange}
+                />
+              </Box>
+              <CustomButton
+                message="Đăng ký"
+                type="submit"
+                disabled={isverify}
+                customStyle={{
+                  display: 'block',
+                  width: '100%',
+                  borderRadius: '6px',
+                  marginTop: '24px',
+                }}
               />
-            </Box>
-            <CustomButton
-              message="Đăng ký"
-              type="submit"
-              disabled={isverify}
-              customStyle={{
-                display: 'block',
-                width: '100%',
-                borderRadius: '6px',
-                marginTop: '24px',
-              }}
-            />
 
-            <Box textAlign="end" mt={1}>
-              <Link href="/signin" passHref>
-                Bạn đã có tài khoản?. Đăng nhập
-              </Link>
+              <Box textAlign="end" mt={1}>
+                <Link href="/signin" passHref>
+                  Bạn đã có tài khoản?. Đăng nhập
+                </Link>
+              </Box>
             </Box>
           </Box>
-        </Box>
-        <Copyright sx={{ mt: 5 }} />
-      </Container>
-    </ThemeProvider>
+          <Copyright sx={{ mt: 5 }} />
+        </Container>
+      </ThemeProvider>
+    </Layout>
   );
 };
 

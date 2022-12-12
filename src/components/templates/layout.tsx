@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect } from 'react';
+import React, { ReactNode, useCallback, useEffect } from 'react';
 import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Sidebar from '@/components/molecules/Sidebar';
@@ -8,14 +8,14 @@ import Footer from '../molecules/Footer';
 import useLayoutStyles from '~/layout';
 import theme from '@/utils/theme';
 import useDevice from '@/hooks/utils/useDevice';
-import { getUserCreate, userDataSelector } from '@/store/userSlice';
+import { getInfoUser, userDataSelector } from '@/store/userSlice';
 import { useAppDispatch, useAppSelector } from '@/store/hook';
 import getTokenUser from '@/api/getTokenUser';
 
 type LayoutProps = {
   children: ReactNode | ReactNode[];
   title: string;
-  showNavbar: boolean;
+  showNavbar?: boolean;
   showSidebar?: boolean;
   fetchAgain?: () => void;
   projectIsBeingFetched?: boolean;
@@ -43,11 +43,11 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
     getDataCreateUser();
   }, []);
 
-  const getDataCreateUser = async () => {
+  const getDataCreateUser = useCallback(async () => {
     const localTokens = localStorage.getItem('tokens');
     const token = JSON.parse(localTokens);
-    if (token) await dispatch(getUserCreate(token));
-  };
+    if (token) await dispatch(getInfoUser(token));
+  }, []);
 
   return (
     <>
