@@ -72,7 +72,7 @@ const userSlice = createSlice({
   initialState: {
     data: null,
     token: '',
-    dataUser: {},
+    create: {},
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -82,7 +82,7 @@ const userSlice = createSlice({
       })
       .addCase(createUser.fulfilled, (state, action) => {
         state.token = action.payload.token;
-        state.dataUser = action.payload;
+        state.create = action.payload;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
         state.token = action.payload.token;
@@ -107,5 +107,5 @@ export const tockenDataCreateSelector = createSelector(
 
 export const dataUserCreateSelector = createSelector(
   [userData],
-  (state) => state.dataUser,
+  (state) => state.create,
 );

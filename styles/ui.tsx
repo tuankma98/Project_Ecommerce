@@ -160,7 +160,7 @@ export const ICON_FONT_SIZE = {
   hugeIcon: 32,
   filter: 20,
   superHugeIcon: 80,
-  xxlargeIcon: 38,
+  xxlargeIcon: 42,
 };
 
 export const ICON_POSITION = {

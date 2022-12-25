@@ -24,9 +24,9 @@ const Navbar: React.FunctionComponent = () => {
     ...useButtonStyles(),
   };
 
-  const [infoOpened, setInfoOpened] = React.useState(false);
-  const infoAnchorRef = React.useRef<HTMLButtonElement>(null);
-  const theme = useTheme();
+  // const [infoOpened, setInfoOpened] = React.useState(false);
+  // const infoAnchorRef = React.useRef<HTMLButtonElement>(null);
+  // const theme = useTheme();
   const router = useRouter();
 
   return (

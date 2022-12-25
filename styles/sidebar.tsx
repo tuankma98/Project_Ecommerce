@@ -6,7 +6,7 @@ import zIndex from '@mui/material/styles/zIndex';
 
 const useSidebarStyles = makeStyles(() =>
   createStyles({
-    root: { flexShrink: 0 },
+    root: { flexShrink: 0, borderRight: '1px solid #DDD' },
     list: {
       display: 'flex',
       alignItems: 'center',
@@ -28,8 +28,8 @@ const useSidebarStyles = makeStyles(() =>
     listBtn: {
       display: 'flex',
       flexDirection: 'column',
-      paddingRight: 0,
-      paddingLeft: 0,
+      paddingRight: 8,
+      paddingLeft: 8,
       borderRadius: '16px',
     },
     listIcon: {

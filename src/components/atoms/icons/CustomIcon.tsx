@@ -52,7 +52,7 @@ const CustomIcon: React.FunctionComponent<CustomIconProps> = ({
     }
   };
   return (
-    <span
+    <i
       className={customClass}
       style={
         (customStyles && size) || size //TODO: あとで変更する

@@ -16,71 +16,65 @@ import MapsUgcIcon from '@mui/icons-material/MapsUgc';
 import LightbulbIcon from '@mui/icons-material/Lightbulb';
 import clsx from 'clsx';
 import { useRouter } from 'next/router';
+import useCurrentOrganizationRole from '@/hooks/auth/useCurrentOrganizationRole';
+import {
+  DEFAULT_SIDEBAR_ITEMS,
+  USER_SIDEBAR_ITEMS,
+} from '@/utils/constants/sidebar';
+import SidebarItem from '../atoms/SidebarItem';
+import CustomIcon from '../atoms/icons/CustomIcon';
 
 const Sidebar: React.FunctionComponent = () => {
   const classes = { ...useSidebarStyles() };
   const router = useRouter();
-  const isPathName = ['/'].includes(router.asPath);
+  console.log(router);
+  const isPathName = router.asPath;
+  const currentOrganizationRoleAdmin = useCurrentOrganizationRole();
+
+  const onRedirectTo = (route) => {
+    router.push(route);
+  };
 
   return (
     <Box className={classes.root}>
       <List className={classes.list}>
         <ListItem
           disablePadding
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            cursor: 'pointer',
-          }}
-        >
-          <Box className={classes.listBtn}>
-            <ListItemIcon className={classes.listIcon}>
-              <AddCircleOutlinedIcon
-                fontSize="large"
-                style={{ color: '#1473e6', fontSize: '51.6px' }}
-              />
-            </ListItemIcon>
-          </Box>
-        </ListItem>
-        <ListItem
-          disablePadding
           className={
-            isPathName
+            isPathName === '/create'
               ? clsx(classes.listItem, classes.sidebarItemSelected)
               : classes.listItem
           }
+          onClick={() => onRedirectTo('/create')}
         >
           <ListItemButton className={classes.listBtn}>
-            <ListItemIcon className={classes.listIcon}>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText primary="Home" className={classes.listText} />
+            <CustomIcon customClass="fa-solid fa-circle-plus" size="xxlarge" />
+            <ListItemText primary="" className={classes.listText} />
           </ListItemButton>
         </ListItem>
-        <ListItem disablePadding className={classes.listItem}>
-          <ListItemButton className={classes.listBtn}>
-            <ListItemIcon className={classes.listIcon}>
-              <TheatersIcon />
-            </ListItemIcon>
-            <ListItemText primary="Lộ trình" className={classes.listText} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding className={classes.listItem}>
-          <ListItemButton className={classes.listBtn}>
-            <ListItemIcon className={classes.listIcon}>
-              <LightbulbIcon />
-            </ListItemIcon>
-            <ListItemText primary="Học" className={classes.listText} />
-          </ListItemButton>
-        </ListItem>
-        <ListItem disablePadding className={classes.listItem}>
-          <ListItemButton className={classes.listBtn}>
-            <ListItemIcon className={classes.listIcon}>
-              <MapsUgcIcon />
-            </ListItemIcon>
-            <ListItemText primary="Blog" className={classes.listText} />
-          </ListItemButton>
-        </ListItem>
+        {currentOrganizationRoleAdmin ? (
+          <>
+            {USER_SIDEBAR_ITEMS('admin').map((sidebarItem, index) => (
+              <SidebarItem
+                key={index + 1}
+                sidebarItem={sidebarItem}
+                onRedirectTo={onRedirectTo}
+                currentPath={isPathName}
+              />
+            ))}
+          </>
+        ) : (
+          <>
+            {USER_SIDEBAR_ITEMS('user').map((sidebarItem, index) => (
+              <SidebarItem
+                key={index + 1}
+                sidebarItem={sidebarItem}
+                onRedirectTo={onRedirectTo}
+                currentPath={isPathName}
+              />
+            ))}
+          </>
+        )}
       </List>
     </Box>
   );
