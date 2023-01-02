@@ -610,9 +610,15 @@ const useButtonStyles = makeStyles((theme: Theme) =>
       },
     },
     xs: {
-      lineHeight: '22px',
-      padding: '8px 16px',
-      borderRadius: '6px',
+      boxShadow: '0px 3px 6px #5987E033',
+      color: '#FFFFFF',
+      padding: '5px 29px',
+      borderRadius: '999px',
+      background: 'transparent',
+
+      '&:hover': {
+        backgroundColor: '#FFFFFF',
+      },
     },
     cancelOrDeleteButton: {
       backgroundColor: '#707070',

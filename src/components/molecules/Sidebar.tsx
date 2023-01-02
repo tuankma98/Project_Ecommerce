@@ -27,7 +27,6 @@ import CustomIcon from '../atoms/icons/CustomIcon';
 const Sidebar: React.FunctionComponent = () => {
   const classes = { ...useSidebarStyles() };
   const router = useRouter();
-  console.log(router);
   const isPathName = router.asPath;
   const currentOrganizationRoleAdmin = useCurrentOrganizationRole();
 
@@ -41,14 +40,20 @@ const Sidebar: React.FunctionComponent = () => {
         <ListItem
           disablePadding
           className={
-            isPathName === '/create'
+            isPathName === '/create_blog'
               ? clsx(classes.listItem, classes.sidebarItemSelected)
               : classes.listItem
           }
-          onClick={() => onRedirectTo('/create')}
+          onClick={() => onRedirectTo('/create_blog')}
         >
-          <ListItemButton className={classes.listBtn}>
-            <CustomIcon customClass="fa-solid fa-circle-plus" size="xxlarge" />
+          <ListItemButton className={classes.create}>
+            <CustomIcon
+              customClass="fa-solid fa-circle-plus"
+              customStyles={{
+                color: '#1473e6',
+                fontSize: '42px',
+              }}
+            />
             <ListItemText primary="" className={classes.listText} />
           </ListItemButton>
         </ListItem>

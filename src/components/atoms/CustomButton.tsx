@@ -20,6 +20,8 @@ type CustomButtonProps = {
   iconSize?: number;
   disabled?: boolean;
   type?: string;
+  handleonMouseMove?: () => void;
+  handleonMouseLeave?: () => void;
 };
 
 const CustomButton: React.FC<CustomButtonProps & ButtonProps> = ({
@@ -34,6 +36,8 @@ const CustomButton: React.FC<CustomButtonProps & ButtonProps> = ({
   iconSize,
   disabled,
   type,
+  handleonMouseMove,
+  handleonMouseLeave,
   ...rest
 }) => {
   const theme = useTheme();
@@ -73,6 +77,8 @@ const CustomButton: React.FC<CustomButtonProps & ButtonProps> = ({
       style={customStyle}
       disabled={disabled}
       type={type}
+      onMouseMove={handleonMouseMove}
+      onMouseLeave={handleonMouseLeave}
     >
       {buttonType && (
         <CustomIcon

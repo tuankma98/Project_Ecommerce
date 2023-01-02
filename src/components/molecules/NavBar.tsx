@@ -88,22 +88,6 @@ const Navbar: React.FunctionComponent = () => {
                 <AccountMenu />
               </Box>
             )}
-
-            {/* <Box ml={3}>
-              <AvatarButton
-                onClick={() => handleToggle(setInfoOpened)}
-                customRef={infoAnchorRef}
-                uploadedImage={userProfileImageUrl}
-                showUploadIcon={false}
-                uploadMode={false}
-              />
-            </Box>
-            <UserInfoPopup
-              infoOpened={infoOpened}
-              infoAnchorRef={infoAnchorRef}
-              handleClose={() => setInfoOpened(false)}
-              profileImage={userProfileImageUrl}
-            /> */}
           </Box>
         </Toolbar>
       </Box>

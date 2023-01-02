@@ -6,7 +6,7 @@ import ServerStyleSheets from '@mui/styles/ServerStyleSheets';
 export default class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html lang="vi">
         <Head>
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="shortcut icon" href="/favicon.png" />

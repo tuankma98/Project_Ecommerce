@@ -3,9 +3,6 @@ import { createStyles, makeStyles } from '@mui/styles';
 const useSliderStyles = makeStyles((theme) =>
   createStyles({
     wrapper: {
-      '& > .slick-slider > .slick-list': {
-        height: '270px',
-      },
       '& > .slick-slider > .slick-track': {
         height: '100%',
       },
@@ -16,6 +13,10 @@ const useSliderStyles = makeStyles((theme) =>
       display: 'flex',
       alignItems: 'center',
       borderRadius: 16,
+
+      '& .slick-list': {
+        height: '270px',
+      },
 
       '& > .slick-prev': {
         left: '-10px',
@@ -42,6 +43,19 @@ const useSliderStyles = makeStyles((theme) =>
       '& .slick-dots': {
         textAlign: 'start',
       },
+    },
+    sliderList: {
+      display: 'flex',
+    },
+    sliderContent: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'space-evenly',
+      width: '100%',
+      padding: 36,
+      borderBottomLeftRadius: '16px',
+      borderTopLeftRadius: '16px',
     },
     cardWrapper: {
       outline: 'none',

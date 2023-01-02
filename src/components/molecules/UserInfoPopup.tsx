@@ -127,16 +127,17 @@ const UserInfoPopup: React.FC<UserInfoPopupProps> = ({
                         }}
                         className={classes.logoutButton}
                       >
+                        <CustomIcon
+                          customClass="fa-regular fa-address-card"
+                          customStyles={{
+                            color: '#1473e6',
+                            fontSize: '20px',
+                            paddingRight: 8,
+                          }}
+                        />
                         Profile
                       </Button>
                     </Link>
-                    <Divider
-                      variant="middle"
-                      style={{
-                        backgroundColor: theme.palette.background.default,
-                        marginTop: theme.spacing(2),
-                      }}
-                    />
                   </Grid>
                   <Grid item xs={12} style={{ marginTop: '12px' }}>
                     <Link href="/user/me" passHref>
@@ -146,6 +147,14 @@ const UserInfoPopup: React.FC<UserInfoPopupProps> = ({
                         }}
                         className={classes.logoutButton}
                       >
+                        <CustomIcon
+                          customClass="fa-solid fa-gear"
+                          customStyles={{
+                            color: '#1473e6',
+                            fontSize: '20px',
+                            paddingRight: 8,
+                          }}
+                        />
                         Settings
                       </Button>
                     </Link>
@@ -162,6 +171,14 @@ const UserInfoPopup: React.FC<UserInfoPopupProps> = ({
                       className={classes.logoutButton}
                       onClick={handleLogout}
                     >
+                      <CustomIcon
+                        customClass="fa-solid fa-arrow-right-from-bracket"
+                        customStyles={{
+                          color: '#1473e6',
+                          fontSize: '20px',
+                          paddingRight: 8,
+                        }}
+                      />
                       Logout
                     </Button>
                   </Grid>

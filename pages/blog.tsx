@@ -6,7 +6,7 @@ import React from 'react';
 
 const Blog = () => {
   return (
-    <Layout title="blog" showNavbar showSidebar>
+    <Layout title="Blog" showNavbar showSidebar>
       <Box
         component="main"
         sx={{
