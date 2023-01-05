@@ -19,7 +19,6 @@ const AccountMenu = () => {
   const data = useAppSelector(userDataSelector);
 
   const infoAnchorRef = React.useRef<HTMLButtonElement>(null);
-  const [anchorEl, setAnchorEl] = React.useState(null);
   const [infoOpened, setInfoOpened] = React.useState(false);
   const [placement, setPlacement] = React.useState<PopperPlacementType>();
 

@@ -1,6 +1,11 @@
 import axiosClient from '../utils/axios';
 
-export const postData = async (endpoint, formData, params, headers) => {
+export const postData = async (
+  endpoint,
+  formData,
+  params = { 'Content-Type': 'application/json' },
+  headers?,
+) => {
   try {
     const response = await axiosClient.post(`/${endpoint}`, formData, {
       headers,
@@ -22,8 +27,8 @@ export const postData = async (endpoint, formData, params, headers) => {
 
 export const getData = async (
   endpoint: string,
-  params: Record<string, unknown>,
-  headers,
+  params?: Record<string, unknown>,
+  headers?,
 ) => {
   try {
     const response = await axiosClient.get(`/${endpoint}`, { params, headers });

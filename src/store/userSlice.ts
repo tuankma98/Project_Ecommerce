@@ -5,7 +5,6 @@ import {
 } from '@reduxjs/toolkit';
 import { getData, postData } from '../api';
 import { RootState } from './store';
-import { NavbarType } from '@/utils/types';
 
 // get user create
 export const getInfoUser = createAsyncThunk(
@@ -16,7 +15,7 @@ export const getInfoUser = createAsyncThunk(
         'user/me',
         {},
         {
-          Authorization: `${token}`,
+          Authorization: token,
         },
       );
       return response.data;
@@ -31,14 +30,9 @@ export const loginUser = createAsyncThunk(
   'user/login',
   async (formData: string, { rejectWithValue }) => {
     try {
-      const response = await postData(
-        'auth/login',
-        formData,
-        {},
-        {
-          'Content-Type': 'application/json',
-        },
-      );
+      const response = await postData('auth/login', formData, null, {
+        'Content-Type': 'application/json',
+      });
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -51,14 +45,9 @@ export const createUser = createAsyncThunk(
   'user/create',
   async (formData: string, { rejectWithValue }) => {
     try {
-      const response = await postData(
-        'auth/signup',
-        formData,
-        {},
-        {
-          'Content-Type': 'application/json',
-        },
-      );
+      const response = await postData('auth/signup', formData, null, {
+        'Content-Type': 'application/json',
+      });
 
       return response.data;
     } catch (err) {
@@ -100,7 +89,7 @@ export const userDataSelector = createSelector(
   (state) => state.data,
 );
 
-export const tockenDataCreateSelector = createSelector(
+export const tokenDataCreateSelector = createSelector(
   [userData],
   (state) => state.token,
 );

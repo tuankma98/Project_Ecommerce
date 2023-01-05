@@ -1,19 +1,22 @@
+import { getAllDataCreateBlog } from '@/store/createBlogSlice';
+import { useAppDispatch } from '@/store/hook';
 import { Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import BlogItem from './BlogItem';
 
 const BlogList = () => {
   const [listBlogs, setListBlogs] = useState([]);
+  const dispatch = useAppDispatch();
 
   // GET ALL BLOGS
   // const { getAllBlogAPI } = getAllBlog();
-  const getAllBlogByAll = async () => {
-    // const data = await getAllBlogAPI();
-    // if (data) setListBlogs(data.blog);
-  };
+  // const getAllBlogByAll = async () => {
+  //   // const data = await getAllBlogAPI();
+  //   // if (data) setListBlogs(data.blog);
+  // };
 
   useEffect(() => {
-    getAllBlogByAll();
+    dispatch(getAllDataCreateBlog(null));
   }, []);
 
   return (

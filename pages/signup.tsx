@@ -11,7 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CustomButton from '@/components/atoms/CustomButton';
 import { useAppDispatch, useAppSelector } from '@/store/hook';
-import { createUser, tockenDataCreateSelector } from '@/store/userSlice';
+import { createUser, tokenDataCreateSelector } from '@/store/userSlice';
 import { useRouter } from 'next/router';
 import Layout from '@/components/templates/layout';
 
@@ -19,7 +19,7 @@ const Signup = () => {
   const theme = createTheme();
   const router = useRouter();
   const dispatch = useAppDispatch();
-  const token = useAppSelector(tockenDataCreateSelector);
+  const token = useAppSelector(tokenDataCreateSelector);
 
   const [messageUserName, setMessageUserName] = useState(true);
   const [messageEmail, setMessageEmail] = useState(true);

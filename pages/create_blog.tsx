@@ -1,5 +1,5 @@
 import Layout from '@/components/templates/layout';
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { useState } from 'react';
 
 import { Box } from '@mui/system';
@@ -10,11 +10,19 @@ import Editor from '@/components/blog/Editor';
 import Notification from '@/components/notification/Notification';
 import Error from '@/components/notification/Error';
 import RioUpload from '@/components/RioUpload';
+import useCreateBlogStyles from '~/createBlog';
+import { useAppDispatch } from '@/store/hook';
+import { postCreateBlogData } from '@/store/createBlogSlice';
+import { useRouter } from 'next/router';
 
 const CreateBlog = () => {
+  const classes = { ...useCreateBlogStyles() };
+  const dispatch = useAppDispatch();
+  const router = useRouter();
+
   const [editorLoaded, setEditorLoaded] = useState(false);
-  const [dataContent, setDataContent] = useState('');
   const [dataBlog, setDataBlog] = useState<{}>();
+
   const [popup, setPopup] = useState(false);
   const [found, setFound] = useState(false);
 
@@ -24,34 +32,32 @@ const CreateBlog = () => {
   const handleChange = (e) => {
     const { name, value } = e.target;
 
-    setDataBlog({
-      ...dataBlog,
-      content: dataContent,
+    setDataBlog((prev) => ({
+      ...prev,
       [name]: value,
-    });
+    }));
   };
 
   // Image
   const handleChangeFeaturedImage = (newImageUrl) => {
-    setDataBlog({
-      ...dataBlog,
-      content: dataContent,
+    setDataBlog((prev) => ({
+      ...prev,
       featured_image: newImageUrl,
-    });
+    }));
   };
 
-  // ADD BLOG
-  // const { addBlogAPI } = addBlog();
-  const addBlogByAuthor = async (dataBlog) => {
-    // const data = await addBlogAPI(dataBlog);
-    // if (data === 200) setPopup(true);
-    // if (data === 401) setFound(true);
+  const successCallback = () => {
+    router.push('/blog');
   };
 
   // SUBMIT
   const handleSubmit = (e) => {
     e.preventDefault();
-    addBlogByAuthor(dataBlog);
+
+    const localTokens = localStorage.getItem('tokens');
+    const token = JSON.parse(localTokens);
+    const formData = { ...dataBlog, token };
+    dispatch(postCreateBlogData({ formData, successCallback }));
   };
 
   useEffect(() => {
@@ -110,30 +116,28 @@ const CreateBlog = () => {
           sx={{ mt: 1 }}
         >
           <Box>
-            <Box style={{ display: 'flex' }}>
+            <Grid container spacing={3}>
               <Grid item lg={6}>
-                <Box className="blog-post-title">
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    label="Title"
-                    name="title"
-                    onChange={handleChange}
-                  />
-                </Box>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  label="Title"
+                  name="title"
+                  onChange={handleChange}
+                  className={classes.blogPostText}
+                />
               </Grid>
               <Grid item lg={6}>
-                <Box className="blog-post-title">
-                  <TextField
-                    margin="normal"
-                    required
-                    fullWidth
-                    label="Slug"
-                    name="slug"
-                    onChange={handleChange}
-                  />
-                </Box>
+                <TextField
+                  margin="normal"
+                  required
+                  fullWidth
+                  label="Slug"
+                  name="slug"
+                  onChange={handleChange}
+                  className={classes.blogPostText}
+                />
               </Grid>
 
               <Grid item lg={12}>
@@ -142,13 +146,13 @@ const CreateBlog = () => {
                   required
                   multiline
                   label="Description"
-                  className="settings-form-input"
                   name="description"
                   onChange={handleChange}
-                  rows={4}
+                  rows={6}
+                  className={classes.blogPostText}
                 />
               </Grid>
-            </Box>
+            </Grid>
 
             <Box>
               <RioUpload isVideo={false} setValue={handleChangeFeaturedImage} />
@@ -156,18 +160,15 @@ const CreateBlog = () => {
           </Box>
 
           <Editor
-            name="description"
+            name="description-1"
             onChange={(data) => {
               setDataBlog((prev) => ({
                 ...prev,
                 content: data,
               }));
-              setDataContent(data);
             }}
             editorLoaded={editorLoaded}
           />
-
-          {/* {dataBlog && JSON.stringify(dataBlog.content)} */}
 
           <Button
             type="submit"
