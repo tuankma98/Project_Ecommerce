@@ -9,7 +9,6 @@ import theme from '@/utils/theme';
 import useDevice from '@/hooks/utils/useDevice';
 import { getInfoUser, userDataSelector } from '@/store/userSlice';
 import { useAppDispatch, useAppSelector } from '@/store/hook';
-import getTokenUser from '@/api/getTokenUser';
 
 type LayoutProps = {
   children: ReactNode | ReactNode[];
@@ -31,6 +30,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
   const classes = useLayoutStyles();
   const { isMobile } = useDevice();
   const dispatch = useAppDispatch();
+  const data = useAppSelector(userDataSelector);
 
   const getContentPadding: (showNavbar: boolean) => string = (showNavbar) => {
     if (showNavbar && isMobile) return theme.spacing(13.5);
@@ -39,14 +39,12 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
   };
 
   useEffect(() => {
-    getDataCreateUser();
-  }, []);
-
-  const getDataCreateUser = useCallback(async () => {
     const localTokens = localStorage.getItem('tokens');
     const token = JSON.parse(localTokens);
-    if (token) await dispatch(getInfoUser(token));
-  }, []);
+    if (!data) {
+      dispatch(getInfoUser(token));
+    }
+  }, [data, dispatch]);
 
   return (
     <>
