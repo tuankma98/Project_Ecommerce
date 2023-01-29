@@ -76,7 +76,7 @@ const SliderBanner = () => {
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
-    // autoplay: true,
+    autoplay: true,
     autoplaySpeed: 5000,
     cssEase: 'linear',
   };
@@ -95,8 +95,8 @@ const SliderBanner = () => {
   return (
     <Box width="100%">
       <Slider {...settings} className={classes.slider}>
-        {imageSlider.map((item) => (
-          <Box textAlign="center">
+        {imageSlider.map((item, index) => (
+          <Box textAlign="center" key={index}>
             <Box className={classes.sliderList}>
               <Box
                 className={classes.sliderContent}

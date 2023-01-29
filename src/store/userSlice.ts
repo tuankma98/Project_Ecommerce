@@ -18,6 +18,7 @@ export const getInfoUser = createAsyncThunk(
           Authorization: token,
         },
       );
+
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);

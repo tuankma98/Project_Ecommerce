@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useEffect } from 'react';
+import React, { ReactNode, useEffect } from 'react';
 import Head from 'next/head';
 import Box from '@mui/material/Box';
 import Sidebar from '@/components/molecules/Sidebar';
@@ -7,8 +7,8 @@ import Footer from '../molecules/Footer';
 import useLayoutStyles from '~/layout';
 import theme from '@/utils/theme';
 import useDevice from '@/hooks/utils/useDevice';
-import { getInfoUser, userDataSelector } from '@/store/userSlice';
-import { useAppDispatch, useAppSelector } from '@/store/hook';
+import { getInfoUser } from '@/store/userSlice';
+import { useAppDispatch } from '@/store/hook';
 
 type LayoutProps = {
   children: ReactNode | ReactNode[];
@@ -30,7 +30,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
   const classes = useLayoutStyles();
   const { isMobile } = useDevice();
   const dispatch = useAppDispatch();
-  const data = useAppSelector(userDataSelector);
+
 
   const getContentPadding: (showNavbar: boolean) => string = (showNavbar) => {
     if (showNavbar && isMobile) return theme.spacing(13.5);
@@ -41,10 +41,11 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
   useEffect(() => {
     const localTokens = localStorage.getItem('tokens');
     const token = JSON.parse(localTokens);
-    if (!data) {
+    console.log(!!token)
+    if (token) {
       dispatch(getInfoUser(token));
     }
-  }, [data, dispatch]);
+  }, [dispatch]);
 
   return (
     <>
