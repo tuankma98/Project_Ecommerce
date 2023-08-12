@@ -11,7 +11,7 @@ import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import CustomButton from '@/components/atoms/CustomButton';
 import { useAppDispatch, useAppSelector } from '@/store/hook';
-import { createUser, tokenDataCreateSelector } from '@/store/userSlice';
+import { createUser, tokenDataCreateSelector } from '@/store/authSlice';
 import { useRouter } from 'next/router';
 import Layout from '@/components/templates/layout';
 

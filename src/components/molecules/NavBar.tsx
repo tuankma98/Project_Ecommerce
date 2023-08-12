@@ -18,7 +18,6 @@ import AccountMenu from '../atoms/navbar/AccountMenu';
 const Navbar: React.FunctionComponent = () => {
   const data = useAppSelector(userDataSelector);
 
-
   const classes = {
     ...useNavbarStyles(),
     ...useWordWrapStyles(),

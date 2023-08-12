@@ -52,7 +52,7 @@ const imageSlider = [
     title: 'F8 Trên Youtube',
     description:
       'F8 được nhắc tới ở mọi nơi, ở đâu có cơ hội việc làm cho nghề IT và có những con người yêu thích lập trình F8 sẽ ở đó.',
-    btnTitle: 'Truy cập Facebook',
+    btnTitle: 'Truy cập Kênh',
     background: 'linear-gradient(to right, rgb(254, 33, 94), rgb(255, 148, 2))',
     color: '#fe215e',
     boxShadow: 'rgb(255, 148, 2)',
@@ -62,7 +62,7 @@ const imageSlider = [
     title: 'F8 Trên Facebook',
     description:
       'F8 được nhắc tới ở mọi nơi, ở đâu có cơ hội việc làm cho nghề IT và có những con người yêu thích lập trình F8 sẽ ở đó.',
-    btnTitle: 'Truy cập kênh',
+    btnTitle: 'Truy cập Facebook',
     background: 'linear-gradient(to right, rgb(0, 126, 254), rgb(6, 195, 254))',
     color: '#007efe',
     boxShadow: 'rgb(6, 195, 254)',

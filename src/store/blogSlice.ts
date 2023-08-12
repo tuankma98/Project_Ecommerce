@@ -6,9 +6,9 @@ import {
 import { getData, postData } from '../api';
 import { RootState } from './store';
 
-// get user create
+// post blog
 export const postCreateBlogData = createAsyncThunk(
-  'user/postCreateBlogData',
+  'blog/postCreateBlogData',
   async (
     {
       formData,
@@ -35,36 +35,46 @@ export const postCreateBlogData = createAsyncThunk(
 );
 
 export const getAllDataCreateBlog = createAsyncThunk(
-  'user/getAllDataCreateBlog',
-  async (formData: any, { rejectWithValue }) => {
+  'blog/getAllDataCreateBlog',
+  async (params, { rejectWithValue }) => {
     try {
-      const response = await getData('blog', formData, null);
-      return response.data;
+      const response = await getData('blog', {});
+      return response.data.blog;
     } catch (err) {
       return rejectWithValue(err.response.data);
     }
   },
 );
 
-const createBlogSlice = createSlice({
+const blogSlice = createSlice({
   name: 'user',
   initialState: {
     data: null,
+    allBlog: [],
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(postCreateBlogData.fulfilled, (state, action) => {
-      state.data = action.payload;
-    });
+    builder
+      .addCase(postCreateBlogData.fulfilled, (state, action) => {
+        state.data = action.payload;
+      })
+      .addCase(getAllDataCreateBlog.fulfilled, (state, action) => {
+        state.allBlog = action.payload;
+      });
   },
 });
 
-const { actions, reducer } = createBlogSlice;
+const { actions, reducer } = blogSlice;
 export default reducer;
 
-export const createBlogData = (state: RootState) => state.user;
+export const createBlogData = (state: RootState) => state.blog;
 
 export const dataCreateBlogSelector = createSelector(
   [createBlogData],
   (state) => state.data,
+);
+
+export const allDataCreateBlogSelector = createSelector(
+  [createBlogData],
+  (state) => state.allBlog,
 );

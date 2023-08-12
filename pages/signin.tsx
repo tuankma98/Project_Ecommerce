@@ -12,7 +12,7 @@ import CustomInput from '@/components/atoms/CustomInput';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { useAppDispatch, useAppSelector } from '@/store/hook';
-import { loginUser, tokenDataCreateSelector } from '@/store/userSlice';
+import { loginUser, tokenDataCreateSelector } from '@/store/authSlice';
 import { useRouter } from 'next/router';
 import Layout from '@/components/templates/layout';
 

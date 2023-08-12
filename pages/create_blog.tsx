@@ -12,7 +12,7 @@ import Error from '@/components/notification/Error';
 import RioUpload from '@/components/RioUpload';
 import useCreateBlogStyles from '~/createBlog';
 import { useAppDispatch } from '@/store/hook';
-import { postCreateBlogData } from '@/store/createBlogSlice';
+import { postCreateBlogData } from '@/store/blogSlice';
 import { useRouter } from 'next/router';
 
 const CreateBlog = () => {

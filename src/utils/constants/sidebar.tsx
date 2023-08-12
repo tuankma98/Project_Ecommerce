@@ -24,19 +24,19 @@ export const DEFAULT_SIDEBAR_ITEMS = [
 // MEMO:  Items visible in the sidebar from construction admin.
 export const SIDEBAR_ITEMS_FOR_ADMIN = [
   {
-    key: 'ADMIN_ORGANIZATIONS',
-    name: '工務店アカウント',
-    icon: 'icon-ap_office_line',
+    key: '/',
+    name: 'Home',
+    icon: 'fa-solid fa-house',
   },
   {
-    key: 'ADMIN_USERS',
-    name: 'サービス管理者',
-    icon: 'icon-ap_systemicon_line',
+   key: '/add-teacher',
+    name: 'Teachers',
+    icon: 'fa-solid fa-users',
   },
   {
-    key: 'ADMIN_SERVICE_SETTING',
-    name: 'サービス設定',
-    icon: 'icon-ap_setting_line',
+    key: '/sessions',
+    name: 'Sessions',
+    icon: 'fa-solid fa-timeline',
   },
 ];
 

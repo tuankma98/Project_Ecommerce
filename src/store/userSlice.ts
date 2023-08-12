@@ -3,7 +3,7 @@ import {
   createSelector,
   createSlice,
 } from '@reduxjs/toolkit';
-import { getData, postData } from '../api';
+import { getData } from '../api';
 import { RootState } from './store';
 
 // get user create
@@ -26,14 +26,13 @@ export const getInfoUser = createAsyncThunk(
   },
 );
 
-// get user login
-export const loginUser = createAsyncThunk(
-  'user/login',
-  async (formData: string, { rejectWithValue }) => {
+// get all user
+export const getAllUser = createAsyncThunk(
+  'user/getAllUser',
+  async (params, { rejectWithValue }) => {
     try {
-      const response = await postData('auth/login', formData, null, {
-        'Content-Type': 'application/json',
-      });
+      const response = await getData('user', {});
+
       return response.data;
     } catch (err) {
       return rejectWithValue(err.response.data);
@@ -41,14 +40,12 @@ export const loginUser = createAsyncThunk(
   },
 );
 
-// create account user
-export const createUser = createAsyncThunk(
-  'user/create',
-  async (formData: string, { rejectWithValue }) => {
+// get all teacher
+export const getAllTeacher = createAsyncThunk(
+  'user/getAllTeacher',
+  async (params, { rejectWithValue }) => {
     try {
-      const response = await postData('auth/signup', formData, null, {
-        'Content-Type': 'application/json',
-      });
+      const response = await getData('user', {});
 
       return response.data;
     } catch (err) {
@@ -61,8 +58,7 @@ const userSlice = createSlice({
   name: 'user',
   initialState: {
     data: null,
-    token: '',
-    create: {},
+    allUser: [],
   },
   reducers: {},
   extraReducers: (builder) => {
@@ -70,12 +66,8 @@ const userSlice = createSlice({
       .addCase(getInfoUser.fulfilled, (state, action) => {
         state.data = action.payload;
       })
-      .addCase(createUser.fulfilled, (state, action) => {
-        state.token = action.payload.token;
-        state.create = action.payload;
-      })
-      .addCase(loginUser.fulfilled, (state, action) => {
-        state.token = action.payload.token;
+      .addCase(getAllUser.fulfilled, (state, action) => {
+        state.allUser = action.payload;
       });
   },
 });
@@ -90,12 +82,7 @@ export const userDataSelector = createSelector(
   (state) => state.data,
 );
 
-export const tokenDataCreateSelector = createSelector(
+export const dataAllUserCreateSelector = createSelector(
   [userData],
-  (state) => state.token,
-);
-
-export const dataUserCreateSelector = createSelector(
-  [userData],
-  (state) => state.create,
+  (state) => state.allUser,
 );

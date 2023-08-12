@@ -1,11 +1,17 @@
 import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
 
+import authReducer from './authSlice';
 import userReducer from './userSlice';
-import createBlogReducer from './userSlice';
+import teacherReducer from './teacherSlice';
+import blogReducer from './blogSlice';
+import courseReducer from './courseSlice';
 
 const rootReducer = {
+  auth: authReducer,
   user: userReducer,
-  createBlog: createBlogReducer,
+  teacher: teacherReducer,
+  blog: blogReducer,
+  course: courseReducer,
 };
 
 export const store = configureStore({

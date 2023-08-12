@@ -41,7 +41,6 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
   useEffect(() => {
     const localTokens = localStorage.getItem('tokens');
     const token = JSON.parse(localTokens);
-    console.log(!!token)
     if (token) {
       dispatch(getInfoUser(token));
     }

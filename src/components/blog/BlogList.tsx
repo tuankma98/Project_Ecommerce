@@ -1,4 +1,4 @@
-import { getAllDataCreateBlog } from '@/store/createBlogSlice';
+import { getAllDataCreateBlog } from '@/store/blogSlice';
 import { useAppDispatch } from '@/store/hook';
 import { Container, Grid, Typography } from '@mui/material';
 import React, { useEffect, useState } from 'react';
