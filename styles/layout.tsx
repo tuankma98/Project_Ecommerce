@@ -5,8 +5,8 @@ const useLayoutStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
       display: 'flex',
-      flex: 1,
-      minHeight: '100vh',
+      // flex: 1,
+      // minHeight: '100vh',
     },
     footer: {},
   }),

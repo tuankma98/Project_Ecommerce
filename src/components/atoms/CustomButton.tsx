@@ -20,6 +20,7 @@ type CustomButtonProps = {
   iconSize?: number;
   disabled?: boolean;
   type?: string;
+  variant?: string;
   handleonMouseMove?: () => void;
   handleonMouseLeave?: () => void;
 };
@@ -36,6 +37,7 @@ const CustomButton: React.FC<CustomButtonProps & ButtonProps> = ({
   iconSize,
   disabled,
   type,
+  variant = 'contained',
   handleonMouseMove,
   handleonMouseLeave,
   ...rest
@@ -71,7 +73,7 @@ const CustomButton: React.FC<CustomButtonProps & ButtonProps> = ({
   return (
     <Button
       {...rest}
-      variant="contained"
+      variant={variant}
       onClick={onClick}
       className={getButtonClass()}
       style={customStyle}

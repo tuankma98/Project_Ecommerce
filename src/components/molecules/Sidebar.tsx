@@ -44,7 +44,7 @@ const Sidebar: React.FunctionComponent = () => {
               ? clsx(classes.listItem, classes.sidebarItemSelected)
               : classes.listItem
           }
-          onClick={() => onRedirectTo('/create_blog')}
+          onClick={() => onRedirectTo('/create-blog')}
         >
           <ListItemButton className={classes.create}>
             <CustomIcon

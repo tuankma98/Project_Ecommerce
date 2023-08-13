@@ -18,6 +18,18 @@ export const getAllDataCourse = createAsyncThunk(
   },
 );
 
+export const getDataCourse = createAsyncThunk(
+  'course/getDataCourse',
+  async (slug: string, { rejectWithValue }) => {
+    try {
+      const response = await getData(`api/courses/${slug}`);
+      return response.data.course;
+    } catch (err) {
+      return rejectWithValue(err.response.data);
+    }
+  },
+);
+
 const courseSlice = createSlice({
   name: 'user',
   initialState: {
@@ -26,9 +38,13 @@ const courseSlice = createSlice({
   },
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getAllDataCourse.fulfilled, (state, action) => {
-      state.allCourse = action.payload;
-    });
+    builder
+      .addCase(getDataCourse.fulfilled, (state, action) => {
+        state.data = action.payload;
+      })
+      .addCase(getAllDataCourse.fulfilled, (state, action) => {
+        state.allCourse = action.payload;
+      });
   },
 });
 
@@ -40,4 +56,9 @@ export const createBlogData = (state: RootState) => state.course;
 export const allDataCourseSelector = createSelector(
   [createBlogData],
   (state) => state.allCourse,
+);
+
+export const dataCourseSelector = createSelector(
+  [createBlogData],
+  (state) => state.data,
 );

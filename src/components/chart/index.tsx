@@ -7,7 +7,7 @@ import {
   getAllTeacher,
   dataAllTeacherCreateSelector,
 } from '@/store/teacherSlice';
-import { getAllDataCourse, allDataCourseSelector } from '@/store/courseSlice';
+import { allDataCourseSelector } from '@/store/courseSlice';
 import {
   getAllDataCreateBlog,
   allDataCreateBlogSelector,
@@ -33,7 +33,6 @@ const Chart = () => {
 
     dispatch(getAllUser());
     dispatch(getAllDataCreateBlog());
-    dispatch(getAllDataCourse());
   }, [dispatch]);
 
   return (

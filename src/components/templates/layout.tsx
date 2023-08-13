@@ -31,7 +31,6 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
   const { isMobile } = useDevice();
   const dispatch = useAppDispatch();
 
-
   const getContentPadding: (showNavbar: boolean) => string = (showNavbar) => {
     if (showNavbar && isMobile) return theme.spacing(13.5);
     else if (showNavbar && !isMobile) return theme.spacing(8.25);
@@ -50,27 +49,11 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
     <>
       <Head>
         <title>{title}</title>
-        <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <meta charSet="utf-8" />
-        <link
-          rel="stylesheet"
-          href="https://fonts.googleapis.com/icon?family=Material+Icons"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.min.css"
-        />
-        <link
-          rel="stylesheet"
-          type="text/css"
-          href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick-theme.min.css"
-        />
       </Head>
       <>
         {showNavbar && <NavBar />}
         <main
-          className={showNavbar ? classes.root : ''}
+          className={classes.root}
           style={{
             paddingTop: getContentPadding(showNavbar),
           }}
