@@ -12,7 +12,6 @@ export default function CourseDetail() {
   const courseItemId = router?.query?.id as string;
 
   const dataCourse = useAppSelector(dataCourseSelector);
-  console.log('data: ', dataCourse);
 
   useEffect(() => {
     const localTokens = localStorage.getItem('tokens');
@@ -21,8 +20,9 @@ export default function CourseDetail() {
     if (courseItemId && token) dispatch(getDataCourse(courseItemId));
   }, [dispatch, courseItemId]);
   return (
-    <Layout title="Course-detail" showNavbar showSidebar>
+    <Layout title={dataCourse?.title} showNavbar showSidebar>
       <h1>Page Course Detail: {dataCourse?.title}</h1>
+      11
     </Layout>
   );
 }

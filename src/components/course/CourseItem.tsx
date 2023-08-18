@@ -17,7 +17,6 @@ const CourseItem = ({ course }: { course: any }) => {
   const router = useRouter();
 
   const handleClick = (slug: string) => {
-    console.log('click', slug);
     router.push(`course/${slug}`);
   };
 

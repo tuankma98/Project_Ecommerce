@@ -3,7 +3,7 @@ import {
   createSelector,
   createSlice,
 } from '@reduxjs/toolkit';
-import { getData, postData } from '../api';
+import { getData } from '../api';
 import { RootState } from './store';
 
 export const getAllDataCourse = createAsyncThunk(

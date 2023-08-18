@@ -48,11 +48,11 @@ const authSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(createUser.fulfilled, (state, action) => {
-        state.token = action.payload.token;
+        state.token = action.payload?.token;
         state.create = action.payload;
       })
       .addCase(loginUser.fulfilled, (state, action) => {
-        state.token = action.payload.token;
+        state.token = action.payload?.token;
       });
   },
 });
